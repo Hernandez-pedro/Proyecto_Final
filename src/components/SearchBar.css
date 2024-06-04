@@ -1,0 +1,29 @@
+.input-group {
+    transition: transform 0.2s ease;
+}
+
+.input-group:hover,
+.input-group:focus-within {
+    transform: scale(1.02);
+}
+
+/* SearchBar.css */
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.btn-search {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.btn-search:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.form-control {
+    border-color: #ced4da;
+}

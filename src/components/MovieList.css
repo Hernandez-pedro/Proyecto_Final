@@ -1,0 +1,79 @@
+.card {
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card.hovered {
+  transform: scale(1.05);
+}
+
+/* MovieList.css */
+
+@keyframes borderAnimation {
+  0% {
+      border-color: #ff6347; /* Tomato */
+      border-width: 4px; /* Ancho del borde inicial */
+  }
+  25% {
+      border-color: #ffbb00; /* Amber */
+      border-width: 4px; /* Ancho del borde */
+  }
+  50% {
+      border-color: #4caf50; /* Green */
+      border-width: 4px; /* Ancho del borde */
+  }
+  75% {
+      border-color: #1e90ff; /* Dodger Blue */
+      border-width: 4px; /* Ancho del borde */
+  }
+  100% {
+      border-color: #ff6347; /* Tomato */
+      border-width: 4px; /* Ancho del borde final */
+  }
+}
+
+
+.card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent; /* Border inicial transparente */
+  animation: borderAnimation 8s infinite; /* Animación de 8 segundos, repetición infinita */
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Efecto de escala al pasar el cursor */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Sombra al pasar el cursor */
+}
+
+.card img {
+  transition: all 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.1); /* Efecto de escala al pasar el cursor */
+}
+
+.card-title {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 10px 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.card:hover .card-title {
+  opacity: 1;
+}

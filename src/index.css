@@ -1,9 +1,9 @@
 /* index.css */
 body {
-  background-color: orange;
+  background-color: rgb(204, 0, 255);
   margin: 0;
   font-family: Arial, sans-serif;
-  color: black; /* Cambiar el color del texto para que sea visible sobre el fondo negro */
+  color: rgb(0, 0, 0); /* Cambiar el color del texto para que sea visible sobre el fondo negro */
 }
 
 .home-background {
@@ -23,3 +23,37 @@ body {
   position: relative;
   z-index: 1;
 }
+
+
+
+.modal-dialog {
+  max-width: 35%;
+}
+
+.modal-content {
+  animation: modal-fade 0.3s;
+}
+
+@keyframes modal-fade {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+.nav-link {
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+}
+
+.nav-link:hover {
+  color: rgb(255, 255, 255);
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+

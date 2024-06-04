@@ -9,7 +9,8 @@ export const fetchMovies = async (query) => {
         const response = await axios.get(`${BASE_URL}/search/movie`, {
             params: {
                 api_key: API_KEY,
-                query
+                query,
+                language: 'es-ES'  // Idioma español
             }
         });
         return response.data.results;  // Devuelve los resultados de la búsqueda
@@ -24,7 +25,8 @@ export const fetchMovieDetails = async (id) => {
     try {
         const response = await axios.get(`${BASE_URL}/movie/${id}`, {
             params: {
-                api_key: API_KEY
+                api_key: API_KEY,
+                language: 'es-ES'  // Idioma español
             }
         });
         return response.data;  // Devuelve los detalles de la película
@@ -39,7 +41,8 @@ export const fetchMovieVideos = async (id) => {
     try {
         const response = await axios.get(`${BASE_URL}/movie/${id}/videos`, {
             params: {
-                api_key: API_KEY
+                api_key: API_KEY,
+                language: 'es-ES'  // Idioma español
             }
         });
         return response.data.results;  // Devuelve los videos de la película
@@ -54,7 +57,8 @@ export const fetchRecommendedMovies = async () => {
     try {
         const response = await axios.get(`${BASE_URL}/movie/popular`, {
             params: {
-                api_key: API_KEY
+                api_key: API_KEY,
+                language: 'es-ES'  // Idioma español
             }
         });
         return response.data.results;  // Devuelve las películas recomendadas
