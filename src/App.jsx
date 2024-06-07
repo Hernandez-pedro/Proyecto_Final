@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import SearchBar from './components/SearchBar';
 import MovieList from './components/MovieList';
 import MovieDetails from './components/MovieDetails';
 import { fetchMovies, fetchRecommendedMovies } from './api';
 import Swal from 'sweetalert2';
 import { Nav, Modal, Button } from 'react-bootstrap';
+import './App.css'; // Importar el archivo CSS
 
 const App = () => {
     const [movies, setMovies] = useState([]);
@@ -41,17 +42,17 @@ const App = () => {
         }
     };
 
-    const handleSelectMovie = (movie) => {
+    const handleSelectMovie = useCallback((movie) => {
         setSelectedMovie(movie);
         if (movie.backdrop_path) {
             setBackgroundImage(`https://image.tmdb.org/t/p/original${movie.backdrop_path}`);
         }
-    };
+    }, []);
 
-    const handleShowCategories = () => setShowCategories(true);
-    const handleCloseCategories = () => setShowCategories(false);
+    const handleShowCategories = useCallback(() => setShowCategories(true), []);
+    const handleCloseCategories = useCallback(() => setShowCategories(false), []);
 
-    const handleCategoryClick = async (category) => {
+    const handleCategoryClick = useCallback(async (category) => {
         try {
             const results = await fetchMovies(category);
             setMovies(results);
@@ -60,9 +61,9 @@ const App = () => {
         } catch (error) {
             Swal.fire('Error', 'No se pudieron cargar las películas de esta categoría', 'error');
         }
-    };
+    }, [handleCloseCategories]);
 
-    const handleTitleClick = async () => {
+    const handleTitleClick = useCallback(async () => {
         try {
             const recommendedMovies = await fetchRecommendedMovies();
             setMovies(recommendedMovies);
@@ -71,17 +72,16 @@ const App = () => {
         } catch (error) {
             Swal.fire('Error', 'No se pudieron cargar las películas recomendadas', 'error');
         }
-    };
+    }, []);
 
     return (
-        <div className="content-container">
+        <div className="content-container2">
             <div className="home-background" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
             <div className="container">
                 <h1 className="my-4" onClick={handleTitleClick} style={{ cursor: 'pointer' }}>
                     Películas
                 </h1>
 
-                {/* Barra de Navegación */}
                 <Nav className="justify-content-between">
                     <Nav.Item>
                         <Nav.Link onClick={handleShowCategories}>Categorías</Nav.Link>
@@ -91,10 +91,8 @@ const App = () => {
                     </Nav.Item>
                 </Nav>
 
-                {/* Lista de películas */}
                 <MovieList movies={movies} onSelectMovie={handleSelectMovie} />
 
-                {/* Modal de Categorías */}
                 <Modal show={showCategories} onHide={handleCloseCategories} animation={true}>
                     <Modal.Header closeButton>
                         <Modal.Title>Categorías</Modal.Title>
@@ -105,7 +103,7 @@ const App = () => {
                                 <Button
                                     variant="link"
                                     onClick={() => handleCategoryClick('acción')}
-                                    className="text-decoration-none"
+                                    className="text-decoration-none category-button"
                                 >
                                     Acción
                                 </Button>
@@ -113,8 +111,17 @@ const App = () => {
                             <li>
                                 <Button
                                     variant="link"
+                                    onClick={() => handleCategoryClick('Animación')}
+                                    className="text-decoration-none category-button"
+                                >
+                                    Animación
+                                </Button>
+                            </li>
+                            <li>
+                                <Button
+                                    variant="link"
                                     onClick={() => handleCategoryClick('comedia')}
-                                    className="text-decoration-none"
+                                    className="text-decoration-none category-button"
                                 >
                                     Comedia
                                 </Button>
@@ -122,8 +129,17 @@ const App = () => {
                             <li>
                                 <Button
                                     variant="link"
+                                    onClick={() => handleCategoryClick('Ciencia Ficción')}
+                                    className="text-decoration-none category-button"
+                                >
+                                    Ciencia Ficción
+                                </Button>
+                            </li>
+                            <li>
+                                <Button
+                                    variant="link"
                                     onClick={() => handleCategoryClick('drama')}
-                                    className="text-decoration-none"
+                                    className="text-decoration-none category-button"
                                 >
                                     Drama
                                 </Button>
@@ -132,7 +148,7 @@ const App = () => {
                                 <Button
                                     variant="link"
                                     onClick={() => handleCategoryClick('terror')}
-                                    className="text-decoration-none"
+                                    className="text-decoration-none category-button"
                                 >
                                     Terror
                                 </Button>
@@ -141,7 +157,7 @@ const App = () => {
                                 <Button
                                     variant="link"
                                     onClick={() => handleCategoryClick('Romance')}
-                                    className="text-decoration-none"
+                                    className="text-decoration-none category-button"
                                 >
                                     Romance
                                 </Button>
@@ -149,10 +165,19 @@ const App = () => {
                             <li>
                                 <Button
                                     variant="link"
-                                    onClick={() => handleCategoryClick('Belico')}
-                                    className="text-decoration-none"
+                                    onClick={() => handleCategoryClick('Documentales')}
+                                    className="text-decoration-none category-button"
                                 >
-                                    Belico
+                                    Documentales
+                                </Button>
+                            </li>
+                            <li>
+                                <Button
+                                    variant="link"
+                                    onClick={() => handleCategoryClick('Fantasía')}
+                                    className="text-decoration-none category-button"
+                                >
+                                    Fantasía
                                 </Button>
                             </li>
                         </ul>
@@ -164,7 +189,6 @@ const App = () => {
                     </Modal.Footer>
                 </Modal>
 
-                {/* Detalles de la película seleccionada */}
                 {selectedMovie && <MovieDetails movie={selectedMovie} />}
             </div>
         </div>

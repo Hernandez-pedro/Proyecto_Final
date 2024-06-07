@@ -1,9 +1,9 @@
 /* index.css */
 body {
-  background-color: rgb(204, 0, 255);
+  
   margin: 0;
   font-family: Arial, sans-serif;
-  color: rgb(0, 0, 0); /* Cambiar el color del texto para que sea visible sobre el fondo negro */
+ /* Cambiar el color del texto para que sea visible sobre el fondo negro */
 }
 
 .home-background {
@@ -16,7 +16,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   z-index: -1;
-  opacity: 0.5; /* Ajusta la opacidad según tu preferencia */
+  opacity: 0.1; /* Ajusta la opacidad según tu preferencia */
 }
 
 .content-container {
@@ -45,7 +45,7 @@ body {
 
 .nav-link {
   cursor: pointer;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 .nav-link:hover {
@@ -56,4 +56,10 @@ body {
   text-decoration: none;
 }
 
+
+.content-container2 {
+  position: relative;
+  z-index: 1;
+  color: rgb(255, 255, 255);
+}
 

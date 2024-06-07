@@ -1,8 +1,81 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* App.css */
+
+body {
+  background: url('/marvel.gif') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  position: relative;
+  overflow-x: hidden; /* Evita barras de desplazamiento horizontales */
+  /* Permite posicionar elementos con respecto al body */
+ 
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.home-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: -1;
+  opacity: 0.3; /* Ajuste de la opacidad del fondo */
+}
+
+.content-container {
+  position: relative;
+  z-index: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Animación de aparición del modal */
+@keyframes modal-slide-in {
+  from {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-dialog {
+  animation: modal-slide-in 0.5s ease-out;
+}
+
+/* Animación para las categorías al pasar el cursor */
+.category-button {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s;
+}
+
+.category-button:hover {
+  color: rgb(0, 0, 0);
+}
+
+.category-button::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  background: rgb(0, 0, 0);
+  transition: width 0.3s;
+  bottom: 0;
+  left: 0;
+}
+
+.category-button:hover::after {
+  width: 100%;
 }
 
 .logo {
@@ -11,9 +84,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
-}
+} 
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -33,11 +108,32 @@
   }
 }
 
-.card {
-  padding: 2em;
+/* Estilo y animación de voltear para las tarjetas de películas */
+.movie-card {
+  perspective: 1000px;
+  cursor: pointer;
 }
 
-.read-the-docs {
-  color: #888;
+.movie-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
+.movie-card.flipped .movie-card-inner {
+  transform: rotateY(180deg);
+}
+
+.movie-card-front,
+.movie-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.movie-card-back {
+  transform: rotateY(180deg);
+}

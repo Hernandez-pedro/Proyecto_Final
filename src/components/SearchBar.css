@@ -15,15 +15,16 @@
 
 .btn-search {
     background-color: #007bff;
-    color: white;
-    border-color: #007bff;
+    color: rgb(0, 0, 0);
+    border-color: #00ff08;
 }
 
 .btn-search:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+    background-color: #640db5;
+    border-color: #04ed1f;
 }
 
 .form-control {
-    border-color: #ced4da;
+    border-color: #000000;
 }
+
