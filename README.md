@@ -1,4 +1,4 @@
-¡API de películas usando Vite, React y JavaScript! Esta aplicación incluirá un campo de búsqueda para obtener una lista de películas y permitirá ver detalles específicos de cada película. Utilizaremos useState, useEffect, localStorage, Bootstrap para componentes de diseño, SweetAlert para alertas bonitas, y Modal para mostrar detalles. No utilizaremos los iconos de Bootstrap, sino otros.
+¡API de movieCorn usando Vite, React y JavaScript! Esta aplicación incluirá un campo de búsqueda para obtener una lista de películas y permitirá ver detalles específicos de cada película. Utilizaremos useState, useEffect, localStorage, Bootstrap para componentes de diseño, SweetAlert para alertas bonitas, y Modal para mostrar detalles. No utilizaremos los iconos de Bootstrap, sino otros.
 Utilicé el componente Modal de react-bootstrap en el archivo MovieList.jsx para mostrar los detalles de la película seleccionada.
 
 ![intro](https://github.com/Hernandez-pedro/Proyecto_Final/assets/144267225/7f8248ed-4165-449b-adf1-cfbdd0954cb7)
