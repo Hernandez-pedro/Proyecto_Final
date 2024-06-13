@@ -37,6 +37,6 @@ Las películas recomendadas también se almacenan en localStorage para usarlas p
 - **Modal**: Para mostrar los detalles de la película seleccionada.
 - **Iconos**: No se han implementado en este ejemplo, pero se pueden añadir fácilmente con librerías como FontAwesome.
 ## Usage
-- Busque películas usando la barra de búsqueda.
+- Busqueda películas usando la barra de búsqueda.
 - Haga clic en una película para ver sus detalles.
 - Accede a un resumen de películas.
